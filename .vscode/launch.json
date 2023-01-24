@@ -1,0 +1,41 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "name": "Launch via NPM : Server Code",
+      "request": "launch",
+      "runtimeArgs": [
+        "run-script",
+        "debug",
+        // https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_can-i-debug-if-im-using-symlinks
+        "--preserve-symlinks"
+      ],
+      "runtimeExecutable": "npm",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "cwd": "${workspaceFolder}/src",
+      "trace": true,
+      "sourceMaps": true
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost : Frontend Code",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/src",
+      "runtimeExecutable": "/usr/bin/brave-browser",
+      "runtimeArgs": [ 
+        "--remote-debugging-port=9222",
+        // this gives error cross site
+      //   "--disable-web-security"
+      ],
+      "trace": true,
+      "sourceMaps": true
+    },
+  ]
+}
